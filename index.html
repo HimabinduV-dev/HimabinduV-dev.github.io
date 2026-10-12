@@ -1,1061 +1,743 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-    content="Himabindu Vallapaneni — DevOps and Platform Engineer specializing in cloud infrastructure, Kubernetes, automation, and secure delivery.">
-  <title>Himabindu Vallapaneni | DevOps & Platform Engineer</title>
-
-  <style>
-    :root {
-      --ink: #18334c;
-      --text: #455e73;
-      --muted: #647b8e;
-      --teal: #087e8b;
-      --blue: #3468c9;
-      --line: #dce7ef;
-      --shadow: 0 18px 55px #244b7210;
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 100px;
-    }
-
-    body {
-      margin: 0;
-      background: #fbfcfe;
-      color: var(--text);
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection { background: #bfe9eb; color: var(--ink); }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible {
-      outline: 3px solid var(--teal);
-      outline-offset: 5px;
-    }
-
-    .wrap { width: min(1180px, 90%); margin: auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: #ffffffd9;
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid #ffffff;
-      box-shadow: 0 2px 20px #244b7206;
-    }
-
-    nav {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      color: var(--ink);
-      font-size: .95rem;
-    }
-
-    .monogram {
-      display: grid;
-      place-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      color: white;
-      background: linear-gradient(135deg, var(--teal), var(--blue));
-      box-shadow: 0 5px 15px #087e8b25;
-      font-size: .85rem;
-    }
-
-    .nav-links { display: flex; gap: 28px; font-size: .85rem; }
-    .nav-links a:hover { color: var(--teal); }
-
-    .nav-cta {
-      padding: 8px 17px;
-      border: 1px solid var(--line);
-      border-radius: 100px;
-      background: white;
-      color: var(--ink);
-      font-size: .8rem;
-      font-weight: 650;
-    }
-
-    .hero {
-      position: relative;
-      padding: 90px 0 75px;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 85% 15%, #c8e8f480, transparent 50%),
-        radial-gradient(ellipse at 15% 80%, #e0e5ff70, transparent 50%),
-        linear-gradient(135deg, #ffffff, #f2f8fc);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -150px;
-      top: -220px;
-      border: 1px solid #a7c9de35;
-      border-radius: 50%;
-      box-shadow: 0 0 0 65px #ffffff30, 0 0 0 130px #ffffff20;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 65px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--teal);
-      font-size: .72rem;
-      font-weight: 750;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      margin-bottom: 23px;
-      border: 1px solid #c8dfe9;
-      border-radius: 100px;
-      background: #ffffffb0;
-      color: var(--teal);
-      font-size: .75rem;
-      font-weight: 600;
-    }
-
-    .hero-label::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-    }
-
-    h1, h2, h3 { color: var(--ink); line-height: 1.2; }
-
-    h1 {
-      margin: 0 0 15px;
-      font-size: clamp(2.8rem, 4.8vw, 4.5rem);
-      letter-spacing: -2.5px;
-      font-weight: 750;
-    }
-
-    .gradient-text {
-      background: linear-gradient(110deg, #18334c, #3468c9 65%, #087e8b);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .role {
-      color: var(--teal);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin: 0 0 24px;
-    }
-
-    .intro {
-      color: var(--ink);
-      font-size: 1.12rem;
-      line-height: 1.85;
-      margin: 0 0 17px;
-    }
-
-    .hero-detail {
-      margin: 0;
-      color: var(--muted);
-      font-size: .94rem;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .button {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 17px;
-      padding: 12px 19px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: white;
-      color: var(--ink);
-      font-size: .83rem;
-      font-weight: 650;
-      overflow: hidden;
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px #244b7218;
-    }
-
-    .button.primary {
-      color: white;
-      border-color: transparent;
-      background: linear-gradient(115deg, #087e8b, #3468c9);
-      box-shadow: 0 8px 20px #3468c920;
-    }
-
-    .button.primary::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 30%, #ffffff35, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform .65s;
-      pointer-events: none;
-    }
-
-    .button.primary:hover::after { transform: translateX(120%); }
-
-    .hero-footnote {
-      margin-top: 23px;
-      color: var(--muted);
-      font-size: .74rem;
-    }
-
-    .platform-card {
-      padding: 28px;
-      border: 1px solid #ffffff;
-      border-radius: 23px;
-      background: linear-gradient(145deg, #fffffff5, #ffffffb0);
-      box-shadow: 0 25px 70px #3468c915, inset 0 1px 0 white;
-      backdrop-filter: blur(15px);
-    }
-
-    .card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .card-head strong { color: var(--ink); font-size: .9rem; }
-    .card-head span {
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: #e9f5f3;
-      color: var(--teal);
-      font-size: .66rem;
-    }
-
-    .platform-row {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      padding: 20px 0;
-    }
-
-    .platform-row + .platform-row { border-top: 1px solid #e5edf3; }
-
-    .icon-box {
-      display: grid;
-      place-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #e4f5f4, #e9efff);
-      color: var(--teal);
-      font-size: .86rem;
-      font-weight: 750;
-      flex-shrink: 0;
-    }
-
-    .platform-row strong {
-      display: block;
-      color: var(--ink);
-      font-size: .9rem;
-    }
-
-    .platform-row small {
-      display: block;
-      color: var(--muted);
-      font-size: .75rem;
-      margin-top: 3px;
-    }
-
-    .card-bottom {
-      padding-top: 17px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .73rem;
-    }
-
-    .focus-bar { background: white; border-bottom: 1px solid var(--line); }
-
-    .focus-inner {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      padding: 23px 0;
-      color: var(--ink);
-      font-size: .78rem;
-      font-weight: 600;
-    }
-
-    .focus-inner span::before {
-      content: "✦";
-      color: var(--teal);
-      margin-right: 10px;
-      font-size: .7rem;
-    }
-
-    section { padding: 78px 0; }
-
-    .section-heading { max-width: 720px; margin-bottom: 32px; }
-
-    h2 {
-      margin: 0 0 16px;
-      font-size: clamp(1.9rem, 3.1vw, 2.65rem);
-      letter-spacing: -1px;
-    }
-
-    .section-heading > p:last-child {
-      margin: 0;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .strength-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .strength {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: linear-gradient(145deg, white, #fafcfe);
-      transition: transform .25s, box-shadow .25s, border-color .25s;
-    }
-
-    .strength:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-      border-color: #acd4df;
-    }
-
-    .strength h3 { font-size: 1.04rem; margin: 18px 0 12px; }
-    .strength p { margin: 0; color: var(--muted); font-size: .86rem; }
-
-    .skills-section {
-      background: linear-gradient(135deg, #eef6fa, #f4f3fc);
-      border-top: 1px solid #e7edf5;
-      border-bottom: 1px solid #e7edf5;
-    }
-
-    .skill-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 19px;
-    }
-
-    .skill {
-      padding: 25px;
-      border: 1px solid #ffffff;
-      border-radius: 15px;
-      background: #ffffffd9;
-      box-shadow: 0 5px 20px #244b7205;
-    }
-
-    .skill h3 { font-size: .98rem; margin: 0 0 17px; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
-
-    .tag {
-      padding: 5px 9px;
-      border: 1px solid #e2eaf3;
-      border-radius: 6px;
-      background: #f5f8fc;
-      color: #3b5872;
-      font-size: .73rem;
-    }
-
-    .skill-note { margin: 15px 0 0; color: var(--muted); font-size: .74rem; }
-
-    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-
-    .project {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      overflow: hidden;
-      background: white;
-      transition: transform .25s, box-shadow .25s;
-    }
-
-    .project:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-
-    .project-cover {
-      min-height: 145px;
-      padding: 25px;
-      background: linear-gradient(135deg, #ddf1f2, #e5edff);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project:nth-child(2) .project-cover {
-      background: linear-gradient(135deg, #e1ebfd, #ece6fa);
-    }
-
-    .project:nth-child(3) .project-cover {
-      background: linear-gradient(135deg, #e9e4fa, #dff2f4);
-    }
-
-    .project-cover::after {
-      content: "";
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 35px;
-      border: 1px solid #ffffffc0;
-      right: -25px;
-      top: 25px;
-      transform: rotate(35deg);
-      box-shadow: 0 0 0 25px #ffffff20;
-    }
-
-    .project-cover small {
-      display: block;
-      color: #44627e;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-    }
-
-    .project-cover strong {
-      display: block;
-      margin-top: 16px;
-      color: var(--ink);
-      font-size: 1.4rem;
-      font-weight: 650;
-      letter-spacing: -.4px;
-    }
-
-    .project-body { padding: 25px; flex: 1; display: flex; flex-direction: column; }
-    .project h3 { font-size: 1.1rem; margin: 0 0 12px; }
-    .project p { margin: 0 0 18px; color: var(--muted); font-size: .84rem; }
-
-    .project ul {
-      margin: 0 0 22px;
-      padding-left: 17px;
-      color: var(--text);
-      font-size: .78rem;
-    }
-
-    .project li { margin-bottom: 6px; }
-    .project li::marker { color: var(--teal); }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      padding-top: 20px;
-      margin-top: auto;
-      border-top: 1px solid var(--line);
-    }
-
-    .project-links a { color: var(--teal); font-size: .77rem; font-weight: 700; }
-    .project-links a:hover { text-decoration: underline; }
-
-    .approach {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
-      align-items: start;
-      padding: 45px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: linear-gradient(145deg, #ffffff, #f1f7fb);
-    }
-
-    .approach-copy p { color: var(--muted); font-size: .9rem; }
-
-    blockquote {
-      margin: 24px 0 0;
-      border-left: 3px solid var(--teal);
-      padding-left: 19px;
-      color: var(--ink);
-      font-size: 1rem;
-    }
-
-    .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
-
-    .steps li {
-      display: flex;
-      gap: 16px;
-      padding: 17px 0;
-      counter-increment: step;
-    }
-
-    .steps li + li { border-top: 1px solid var(--line); }
-
-    .steps li::before {
-      content: "0" counter(step);
-      color: var(--teal);
-      font-weight: 750;
-      font-size: .8rem;
-      padding-top: 2px;
-    }
-
-    .steps strong { display: block; color: var(--ink); font-size: .9rem; }
-    .steps p { margin: 4px 0 0; color: var(--muted); font-size: .8rem; }
-
-    .contact {
-      text-align: center;
-      padding: 65px 25px;
-      border-radius: 22px;
-      background:
-        radial-gradient(ellipse at 15% 10%, #ffffff60, transparent 50%),
-        linear-gradient(120deg, #e0f0f4, #e7eafc, #e3f4f0);
-      border: 1px solid #dce6ef;
-      box-shadow: inset 0 1px 0 white;
-    }
-
-    .contact p { color: var(--muted); max-width: 640px; margin: auto; }
-    .contact .eyebrow { margin-bottom: 18px; color: var(--teal); }
-    .contact .buttons { justify-content: center; }
-
-    footer { border-top: 1px solid var(--line); padding: 26px 0; }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      color: var(--muted);
-      font-size: .75rem;
-    }
-
-    @media (max-width: 1000px) {
-      .hero-grid { gap: 35px; }
-      .skill-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-grid { grid-template-columns: 1fr; }
-      .project { display: grid; grid-template-columns: 210px 1fr; }
-      .project-cover { height: 100%; }
-      .project-body { min-width: 0; }
-      .approach { gap: 35px; }
-    }
-
-    @media (max-width: 750px) {
-      nav { flex-wrap: wrap; padding: 14px 0; justify-content: center; gap: 12px 25px; }
-      .brand { margin-right: auto; }
-      .nav-cta { display: none; }
-      .nav-links { gap: 18px; font-size: .78rem; }
-      .hero { padding: 50px 0; }
-      .hero-grid, .approach { grid-template-columns: 1fr; }
-      h1 { letter-spacing: -1.5px; }
-      .strength-grid { grid-template-columns: repeat(2, 1fr); }
-      section { padding: 55px 0; }
-      .approach { padding: 28px; }
-      .focus-inner { justify-content: start; }
-    }
-
-    @media (max-width: 520px) {
-      .brand { margin: 0; }
-      .strength-grid, .skill-grid { grid-template-columns: 1fr; }
-      .project { display: flex; }
-      .project-cover { min-height: 130px; }
-      .platform-card { padding: 23px; }
-      .hero-intro { font-size: 1rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::after { transition: none !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Himabindu Vallapaneni — DevOps and Platform Engineer. Cloud infrastructure, Kubernetes, automation, and secure delivery.">
+<title>Himabindu | DevOps & Platform Engineer</title>
+
+<style>
+:root {
+  --bg: #f3f6fb;
+  --surface: #ffffff;
+  --ink: #142c48;
+  --text: #465b73;
+  --muted: #64768b;
+  --line: #dce4ef;
+  --accent: #007f87;
+  --soft: #e6f4f3;
+  --shadow: 0 16px 45px #16345b12;
+}
+[data-theme="dark"] {
+  --bg: #101928;
+  --surface: #182438;
+  --ink: #eef4ff;
+  --text: #c0cde0;
+  --muted: #9aacbf;
+  --line: #304059;
+  --accent: #62dfd3;
+  --soft: #203d43;
+  --shadow: 0 16px 45px #00000025;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+[hidden] { display: none !important; }
+.wrap { width: min(1180px, 90%); margin: auto; }
+.skip {
+  position: absolute;
+  top: -100px;
+  background: var(--surface);
+  padding: 12px;
+  z-index: 100;
+}
+.skip:focus { top: 5px; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.brand { display: flex; align-items: center; gap: 11px; color: var(--ink); font-weight: 750; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #008f94, #6160d8);
+  color: white;
+  border-radius: 12px;
+  font-size: .8rem;
+}
+.nav-links { display: flex; align-items: center; gap: 25px; font-size: .83rem; }
+.nav-links a:hover { color: var(--accent); }
+.nav-tools { display: flex; gap: 9px; }
+.icon-button {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--ink);
+  padding: 8px 12px;
+  font-size: .78rem;
+}
+.menu-button { display: none; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 85px;
+  color: #ffffff;
+  background:
+    radial-gradient(ellipse at 90% 10%, #5252c060, transparent 55%),
+    radial-gradient(ellipse at 10% 95%, #008f8a65, transparent 50%),
+    #122b49;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#ffffff05 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; gap: 65px; align-items: center; }
+.eyebrow { font-size: .7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 750; color: var(--accent); margin: 0 0 14px; }
+.hero .eyebrow { color: #88e7df; }
+h1 { margin: 16px 0; font-size: clamp(2.8rem, 5vw, 4.7rem); line-height: 1.08; letter-spacing: -2.5px; }
+.hero-role { font-size: 1.12rem; color: #95e8e0; margin: 0 0 22px; font-weight: 600; }
+.hero-intro { font-size: 1.1rem; color: #edf4ff; line-height: 1.85; margin-bottom: 18px; }
+.hero-detail { color: #bbcee3; font-size: .9rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 26px; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 11px 19px;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: var(--surface);
+  font-size: .82rem;
+  font-weight: 650;
+  transition: transform .2s, box-shadow .2s;
+}
+.button:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.hero .button { background: #ffffff0b; color: white; border-color: #ffffff35; }
+.hero .button.primary { background: #89e5dc; border-color: #89e5dc; color: #123c43; }
+.hero-tags { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 26px; }
+.hero-tags span { padding: 5px 10px; border: 1px solid #ffffff20; border-radius: 100px; font-size: .7rem; color: #c5d9eb; }
+
+.console { border: 1px solid #ffffff25; background: #0a1b31b0; border-radius: 18px; overflow: hidden; box-shadow: 0 25px 60px #00000025; }
+.console-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 17px 22px; border-bottom: 1px solid #ffffff15; font-size: .72rem; color: #b7cce0; }
+.console-dots { display: flex; gap: 6px; }
+.console-dots i { width: 7px; height: 7px; border-radius: 50%; background: #6a8aa8; }
+.console-body { padding: 25px; }
+.console-label { font-size: .66rem; color: #88e7df; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+.stage-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.stage {
+  border: 1px solid #ffffff20;
+  border-radius: 7px;
+  padding: 9px 4px;
+  font-size: .68rem;
+  color: #b7cce0;
+  background: transparent;
+}
+.stage[aria-pressed="true"] { background: #89e5dc; color: #16353e; border-color: #89e5dc; }
+.stage-detail { min-height: 170px; padding: 24px 0 12px; }
+.stage-detail h3 { margin: 0 0 10px; font-size: 1.25rem; color: white; }
+.stage-detail p { margin: 0; color: #b7cce0; font-size: .85rem; }
+.console-bottom { border-top: 1px solid #ffffff15; padding-top: 16px; font-size: .7rem; color: #91afcb; }
+
+section { padding: 70px 0; }
+.section-heading { max-width: 720px; margin-bottom: 30px; }
+h2 { margin: 0 0 14px; color: var(--ink); font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.2; letter-spacing: -1px; }
+.section-heading p:last-child { color: var(--muted); margin: 0; font-size: .94rem; }
+
+.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.strength { padding: 25px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px; transition: transform .2s, box-shadow .2s; }
+.strength:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.number { display: inline-grid; place-items: center; width: 37px; height: 37px; border-radius: 10px; background: var(--soft); color: var(--accent); font-size: .75rem; font-weight: 750; }
+.strength h3 { color: var(--ink); font-size: 1rem; margin: 17px 0 10px; }
+.strength p { margin: 0; font-size: .84rem; color: var(--muted); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+.filter { border: 1px solid var(--line); background: var(--surface); color: var(--text); padding: 8px 17px; border-radius: 100px; font-size: .77rem; }
+.filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.project { border: 1px solid var(--line); border-radius: 15px; background: var(--surface); overflow: hidden; box-shadow: 0 5px 20px #142c4805; }
+.project-cover { padding: 25px; min-height: 130px; background: linear-gradient(125deg, #007d88, #365da0); color: white; }
+.project:nth-child(2) .project-cover { background: linear-gradient(125deg, #365da0, #7160b5); }
+.project:nth-child(3) .project-cover { background: linear-gradient(125deg, #5a56a7, #008787); }
+.project-cover span { font-size: .64rem; letter-spacing: 1.5px; text-transform: uppercase; color: #dceaf9; }
+.project-cover strong { display: block; margin-top: 12px; font-size: 1.25rem; line-height: 1.4; }
+.project-body { padding: 24px; }
+.project h3 { color: var(--ink); font-size: 1.1rem; line-height: 1.4; margin: 0 0 11px; }
+.project p { color: var(--muted); font-size: .84rem; margin: 0 0 18px; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tags span { padding: 4px 8px; border-radius: 5px; background: var(--bg); border: 1px solid var(--line); font-size: .68rem; }
+details { margin: 20px 0; border-top: 1px solid var(--line); padding-top: 14px; }
+summary { cursor: pointer; font-size: .8rem; font-weight: 650; color: var(--accent); }
+details ul { margin-bottom: 0; padding-left: 18px; font-size: .79rem; color: var(--text); }
+details li { margin: 7px 0; }
+.project-links { display: flex; gap: 15px; flex-wrap: wrap; }
+.project-links a { color: var(--accent); font-size: .77rem; font-weight: 700; }
+.project-links a:hover { text-decoration: underline; }
+
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.skill { border: 1px solid var(--line); border-radius: 13px; padding: 24px; background: var(--surface); }
+.skill h3 { color: var(--ink); font-size: .98rem; margin: 0 0 16px; }
+.skill p { color: var(--muted); font-size: .75rem; margin-bottom: 0; }
+
+.approach { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; padding: 38px; border-radius: 17px; border: 1px solid var(--line); background: var(--surface); }
+.approach p { color: var(--muted); font-size: .9rem; }
+blockquote { border-left: 3px solid var(--accent); padding-left: 18px; margin: 24px 0 0; color: var(--ink); }
+.approach ol { padding-left: 20px; margin: 0; }
+.approach li { padding: 12px 0; font-size: .85rem; }
+.approach li strong { color: var(--ink); }
+.approach li p { margin: 4px 0 0; font-size: .8rem; }
+
+.contact { background: linear-gradient(115deg, #143554, #315491, #356c83); color: white; border-radius: 20px; padding: 55px 25px; text-align: center; }
+.contact h2 { color: white; }
+.contact .eyebrow { color: #98e6df; }
+.contact p { color: #d0e1f2; max-width: 650px; margin: auto; font-size: .9rem; }
+.contact .actions { justify-content: center; }
+.contact .primary { background: #89e5dc; color: #153b43; border-color: #89e5dc; }
+
+footer { padding: 25px 0; border-top: 1px solid var(--line); }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .75rem; color: var(--muted); }
+
+@media(max-width:950px) {
+  .hero-grid { gap: 30px; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project { display: grid; grid-template-columns: 220px 1fr; }
+  .skill-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:720px) {
+  nav { flex-wrap: wrap; gap: 12px; padding: 14px 0; min-height: 72px; }
+  .brand { font-size: .85rem; }
+  .menu-button { display: block; }
+  .nav-links { display: none; width: 100%; padding: 12px 0; flex-wrap: wrap; }
+  .nav-links.open { display: flex; }
+  .hero { padding: 50px 0; }
+  .hero-grid, .approach { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -1.5px; }
+  .strength-grid { grid-template-columns: repeat(2,1fr); }
+  section { padding: 50px 0; }
+  .approach { padding: 26px; gap: 25px; }
+}
+@media(max-width:480px) {
+  .strength-grid, .skill-grid { grid-template-columns: 1fr; }
+  .project { display: block; }
+  .brand-name { max-width: 150px; line-height: 1.3; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <nav class="wrap" aria-label="Main navigation">
-      <a class="brand" href="#home">
-        <span class="monogram">HV</span>
-        Himabindu Vallapaneni
-      </a>
-      <div class="nav-links">
-        <a href="#expertise">Expertise</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-      </div>
-      <a class="nav-cta" href="#connect">Let’s connect ↗</a>
-    </nav>
-  </header>
+<a class="skip" href="#main">Skip to content</a>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="hero-label">DevOps & Platform Engineering</div>
+<header>
+  <nav class="wrap" aria-label="Main navigation">
+    <a class="brand" href="#home">
+      <span class="brand-mark">HV</span>
+      <span class="brand-name">Himabindu Vallapaneni</span>
+    </a>
 
-          <h1 class="gradient-text">Himabindu<br>Vallapaneni</h1>
-          <p class="role">Engineering reliable paths to production.</p>
-
-          <p class="intro">
-            I bring clarity to complex systems—building cloud infrastructure,
-            automating software delivery, and helping engineering teams
-            work with greater confidence.
-          </p>
-
-          <p class="hero-detail">
-            As a DevOps and Platform Engineer with 5+ years of experience,
-            I combine hands-on engineering with thoughtful problem solving.
-            My work spans Infrastructure as Code, CI/CD, Kubernetes,
-            security, and production operations, with a focus on making
-            systems easier to deliver, maintain, and trust.
-          </p>
-
-          <div class="buttons">
-            <a class="button primary" href="#projects">Explore my work ↗</a>
-            <a class="button"
-              href="https://www.linkedin.com/in/himabindudev"
-              target="_blank" rel="noopener noreferrer">
-              Connect on LinkedIn ↗
-            </a>
-          </div>
-
-          <div class="hero-footnote">
-            Cloud infrastructure · Platform automation · Secure delivery
-          </div>
-        </div>
-
-        <aside class="platform-card" aria-label="Engineering focus">
-          <div class="card-head">
-            <strong>My engineering focus</strong>
-            <span>End to end</span>
-          </div>
-
-          <div class="platform-row">
-            <span class="icon-box" aria-hidden="true">01</span>
-            <div>
-              <strong>Build strong foundations</strong>
-              <small>Cloud infrastructure · Terraform · CloudFormation</small>
-            </div>
-          </div>
-
-          <div class="platform-row">
-            <span class="icon-box" aria-hidden="true">02</span>
-            <div>
-              <strong>Make delivery repeatable</strong>
-              <small>CI/CD · Containers · Kubernetes · GitOps</small>
-            </div>
-          </div>
-
-          <div class="platform-row">
-            <span class="icon-box" aria-hidden="true">03</span>
-            <div>
-              <strong>Integrate security early</strong>
-              <small>Scanning · Validation · Security gates</small>
-            </div>
-          </div>
-
-          <div class="platform-row">
-            <span class="icon-box" aria-hidden="true">04</span>
-            <div>
-              <strong>Understand and improve operations</strong>
-              <small>Observability · Troubleshooting · Root cause analysis</small>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-            Reliable infrastructure. Clear workflows. Practical improvements.
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <div class="focus-bar">
-      <div class="wrap focus-inner">
-        <span>Cloud Engineering</span>
-        <span>Automation</span>
-        <span>Kubernetes</span>
-        <span>DevSecOps</span>
-        <span>Problem Solving</span>
-      </div>
+    <div class="nav-links" id="navigation">
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#connect">Connect</a>
     </div>
 
-    <section id="expertise">
-      <div class="wrap">
-        <div class="section-heading">
-          <p class="eyebrow">Engineering strengths</p>
-          <h2>Technical depth.<br>Practical judgment.</h2>
-          <p>
-            Good engineering connects the tools with the people,
-            processes, and operational realities behind them.
-          </p>
+    <div class="nav-tools">
+      <button class="icon-button" id="themeButton" aria-label="Switch to dark theme">Dark mode</button>
+      <button class="icon-button menu-button" id="menuButton"
+        aria-expanded="false" aria-controls="navigation">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">DevOps & Platform Engineering</p>
+        <h1>Himabindu<br>Vallapaneni</h1>
+        <p class="hero-role">Bringing clarity to complex systems.</p>
+
+        <p class="hero-intro">
+          I build the foundations that help software teams move with
+          confidence—reliable infrastructure, thoughtful automation,
+          and secure paths to production.
+        </p>
+
+        <p class="hero-detail">
+          With 5+ years of experience across cloud infrastructure,
+          CI/CD, Kubernetes, and production operations, I combine
+          hands-on engineering with practical problem solving.
+          My focus is making systems easier to deliver, maintain, and trust.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="#projects">Explore my work ↗</a>
+          <a class="button" href="https://www.linkedin.com/in/himabindudev"
+            target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
 
-        <div class="strength-grid">
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">01</span>
-            <h3>IT Problem Solving</h3>
-            <p>
-              Break complex issues into manageable parts, examine
-              dependencies, and use evidence to identify the cause
-              before choosing a fix.
-            </p>
-          </article>
-
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">02</span>
-            <h3>Automation & Reusability</h3>
-            <p>
-              Turn repetitive infrastructure and delivery work into
-              reusable scripts, workflows, and code that reduce
-              manual effort and improve consistency.
-            </p>
-          </article>
-
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">03</span>
-            <h3>Systems Thinking</h3>
-            <p>
-              Understand how applications, networks, containers,
-              permissions, and configuration interact across
-              environments and deployment stages.
-            </p>
-          </article>
-
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">04</span>
-            <h3>Security-Aware Delivery</h3>
-            <p>
-              Bring vulnerability scanning, secrets protection,
-              infrastructure validation, and security gates
-              into normal engineering workflows.
-            </p>
-          </article>
-
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">05</span>
-            <h3>Operational Reliability</h3>
-            <p>
-              Think beyond deployment with health checks,
-              monitoring, troubleshooting, and improvements
-              that address recurring operational issues.
-            </p>
-          </article>
-
-          <article class="strength">
-            <span class="icon-box" aria-hidden="true">06</span>
-            <h3>Collaboration & Communication</h3>
-            <p>
-              Explain technical issues clearly, document repeatable
-              processes, and work with development and security
-              teams to resolve delivery friction.
-            </p>
-          </article>
+        <div class="hero-tags">
+          <span>Cloud Infrastructure</span>
+          <span>Automation</span>
+          <span>Kubernetes</span>
+          <span>DevSecOps</span>
         </div>
       </div>
-    </section>
 
-    <section class="skills-section" id="skills">
-      <div class="wrap">
-        <div class="section-heading">
-          <p class="eyebrow">Technical toolkit</p>
-          <h2>Across the platform lifecycle.</h2>
-          <p>Tools for provisioning, delivering, securing, and operating applications.</p>
+      <aside class="console" aria-label="Explore engineering workflow">
+        <div class="console-top">
+          <div class="console-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>Engineering workflow</span>
+          <span>↗</span>
         </div>
 
-        <div class="skill-grid">
-          <article class="skill">
-            <h3>Cloud & Infrastructure</h3>
-            <div class="tags">
-              <span class="tag">AWS</span>
-              <span class="tag">Azure</span>
-              <span class="tag">Terraform</span>
-              <span class="tag">CloudFormation</span>
-              <span class="tag">VPC</span>
-              <span class="tag">IAM</span>
-              <span class="tag">Networking</span>
-            </div>
-            <p class="skill-note">GCP: working knowledge.</p>
-          </article>
+        <div class="console-body">
+          <div class="console-label">Select a stage to explore</div>
 
-          <article class="skill">
-            <h3>Containers & Kubernetes</h3>
-            <div class="tags">
-              <span class="tag">Docker</span>
-              <span class="tag">Kubernetes</span>
-              <span class="tag">Helm</span>
-              <span class="tag">EKS</span>
-              <span class="tag">AKS</span>
-              <span class="tag">Services</span>
-              <span class="tag">RBAC</span>
-              <span class="tag">Workload Configuration</span>
-            </div>
-          </article>
+          <div class="stage-tabs" role="group" aria-label="Engineering stages">
+            <button class="stage" data-stage="build" aria-pressed="true">Build</button>
+            <button class="stage" data-stage="deliver" aria-pressed="false">Deliver</button>
+            <button class="stage" data-stage="secure" aria-pressed="false">Secure</button>
+            <button class="stage" data-stage="operate" aria-pressed="false">Operate</button>
+          </div>
 
-          <article class="skill">
-            <h3>CI/CD & GitOps</h3>
-            <div class="tags">
-              <span class="tag">GitHub Actions</span>
-              <span class="tag">Jenkins</span>
-              <span class="tag">Git</span>
-              <span class="tag">Argo CD</span>
-              <span class="tag">Reusable Workflows</span>
-              <span class="tag">Build Automation</span>
-            </div>
-          </article>
+          <div class="stage-detail" aria-live="polite">
+            <h3 id="stageTitle">Build strong foundations.</h3>
+            <p id="stageDescription">
+              Define repeatable infrastructure with Terraform and
+              CloudFormation. Bring consistency to environments,
+              configuration, networking, and access.
+            </p>
+          </div>
 
-          <article class="skill">
-            <h3>Scripting & Automation</h3>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Bash</span>
-              <span class="tag">PowerShell</span>
-              <span class="tag">Boto3</span>
-              <span class="tag">AWS SDK</span>
-              <span class="tag">Platform Automation</span>
-            </div>
-          </article>
-
-          <article class="skill">
-            <h3>DevSecOps</h3>
-            <div class="tags">
-              <span class="tag">Trivy</span>
-              <span class="tag">Gitleaks</span>
-              <span class="tag">SAST</span>
-              <span class="tag">SCA</span>
-              <span class="tag">IaC Scanning</span>
-              <span class="tag">Security Gates</span>
-            </div>
-          </article>
-
-          <article class="skill">
-            <h3>Observability & Operations</h3>
-            <div class="tags">
-              <span class="tag">Prometheus</span>
-              <span class="tag">Grafana</span>
-              <span class="tag">Logging</span>
-              <span class="tag">Alerting</span>
-              <span class="tag">Health Checks</span>
-              <span class="tag">RCA</span>
-              <span class="tag">Linux Troubleshooting</span>
-            </div>
-          </article>
+          <div class="console-bottom">
+            Infrastructure → Delivery → Security → Operations
+          </div>
         </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">Engineering strengths</p>
+        <h2>Tools matter. Judgment makes the difference.</h2>
+        <p>
+          I connect technical execution with systems thinking,
+          operational context, and clear communication.
+        </p>
       </div>
-    </section>
 
-    <section id="projects">
-      <div class="wrap">
-        <div class="section-heading">
-          <p class="eyebrow">Selected projects</p>
-          <h2>Engineering in practice.</h2>
-          <p>
-            Hands-on work connecting reusable infrastructure,
-            automated delivery, and security controls.
-          </p>
-        </div>
+      <div class="strength-grid">
+        <article class="strength">
+          <span class="number">01</span>
+          <h3>IT Problem Solving</h3>
+          <p>Break complex issues into manageable parts, examine dependencies,
+            and use evidence to identify the cause before choosing a fix.</p>
+        </article>
 
-        <div class="project-grid">
-          <article class="project">
-            <div class="project-cover">
-              <small>01 / Delivery engineering</small>
-              <strong>Code → Container<br>→ Kubernetes</strong>
+        <article class="strength">
+          <span class="number">02</span>
+          <h3>Automation & Reusability</h3>
+          <p>Turn repetitive work into reusable scripts, infrastructure
+            definitions, and workflows that improve consistency.</p>
+        </article>
+
+        <article class="strength">
+          <span class="number">03</span>
+          <h3>Systems Thinking</h3>
+          <p>Understand how applications, networks, permissions, containers,
+            and configuration interact across environments.</p>
+        </article>
+
+        <article class="strength">
+          <span class="number">04</span>
+          <h3>Security-Aware Delivery</h3>
+          <p>Bring scanning, secrets protection, infrastructure validation,
+            and security gates into everyday engineering workflows.</p>
+        </article>
+
+        <article class="strength">
+          <span class="number">05</span>
+          <h3>Operational Reliability</h3>
+          <p>Think beyond deployment with observability, health checks,
+            troubleshooting, and improvements that reduce recurrence.</p>
+        </article>
+
+        <article class="strength">
+          <span class="number">06</span>
+          <h3>Collaboration & Clarity</h3>
+          <p>Explain technical issues clearly, document repeatable processes,
+            and work with development and security teams.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2>Explore the engineering behind the projects.</h2>
+        <p>Filter by focus and expand each project to see its capabilities.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter" data-filter="all" aria-pressed="true">All projects</button>
+        <button class="filter" data-filter="delivery" aria-pressed="false">Delivery</button>
+        <button class="filter" data-filter="cloud" aria-pressed="false">Cloud</button>
+        <button class="filter" data-filter="security" aria-pressed="false">Security</button>
+      </div>
+
+      <div class="project-grid">
+        <article class="project" data-category="delivery security">
+          <div class="project-cover">
+            <span>01 / Delivery engineering</span>
+            <strong>Code → Container<br>→ Kubernetes</strong>
+          </div>
+
+          <div class="project-body">
+            <h3>TypeScript DevSecOps Pipeline</h3>
+            <p>An automated workflow connecting application validation,
+              container builds, security scanning, and deployment configuration.</p>
+
+            <div class="tags">
+              <span>GitHub Actions</span><span>Docker</span>
+              <span>Trivy</span><span>Kubernetes</span>
             </div>
 
-            <div class="project-body">
-              <h3>TypeScript DevSecOps Pipeline</h3>
-              <p>
-                An automated workflow from application validation
-                to container publishing and Git-managed
-                Kubernetes configuration.
-              </p>
+            <details>
+              <summary>Explore project capabilities</summary>
               <ul>
-                <li>GitHub Actions tests, linting, and builds</li>
+                <li>Automated tests, linting, and reproducible npm ci builds</li>
                 <li>Multi-stage Docker images</li>
-                <li>Trivy vulnerability gates</li>
-                <li>GHCR publishing with commit SHA tags</li>
-                <li>Automated manifest updates</li>
+                <li>Trivy gates for high and critical vulnerabilities</li>
+                <li>GHCR publishing with commit SHA image tags</li>
+                <li>Automated Kubernetes manifest updates</li>
+                <li>Git-managed configuration and GitOps-oriented delivery</li>
               </ul>
-              <div class="project-links">
-                <a href="https://github.com/HimabinduVallapaneni/Typescript_CICD"
-                  target="_blank" rel="noopener noreferrer">Repository ↗</a>
-                <a href="https://github.com/HimabinduVallapaneni/Typescript_CICD/blob/main/.github/workflows/ci-cd.yml"
-                  target="_blank" rel="noopener noreferrer">Workflow ↗</a>
-              </div>
-            </div>
-          </article>
+            </details>
 
-          <article class="project">
-            <div class="project-cover">
-              <small>02 / Infrastructure as Code</small>
-              <strong>Define. Provision.<br>Reuse.</strong>
+            <div class="project-links">
+              <a href="https://github.com/HimabinduVallapaneni/Typescript_CICD"
+                target="_blank" rel="noopener noreferrer">Repository ↗</a>
+              <a href="https://github.com/HimabinduVallapaneni/Typescript_CICD/blob/main/.github/workflows/ci-cd.yml"
+                target="_blank" rel="noopener noreferrer">Workflow ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-category="cloud">
+          <div class="project-cover">
+            <span>02 / Infrastructure as Code</span>
+            <strong>Define. Provision.<br>Reuse.</strong>
+          </div>
+
+          <div class="project-body">
+            <h3>AWS CloudFormation Platform</h3>
+            <p>Reusable AWS infrastructure definitions for networking,
+              compute, security, and scaling resources.</p>
+
+            <div class="tags">
+              <span>AWS</span><span>CloudFormation</span><span>YAML</span>
             </div>
 
-            <div class="project-body">
-              <h3>AWS CloudFormation Platform</h3>
-              <p>
-                Reusable AWS infrastructure definitions for
-                networking, compute, security, and scaling.
-              </p>
+            <details>
+              <summary>Explore project capabilities</summary>
               <ul>
-                <li>Parameterized YAML templates</li>
-                <li>Systems Manager AMI retrieval</li>
-                <li>Reusable resource definitions</li>
+                <li>Parameterized CloudFormation YAML templates</li>
+                <li>Dynamic AMI retrieval through Systems Manager</li>
+                <li>Reusable infrastructure definitions</li>
                 <li>Automated resource tagging</li>
                 <li>Resource dependency management</li>
               </ul>
-              <div class="project-links">
-                <a href="https://github.com/HimabinduVallapaneni/AWS_Architectures_CloudFormation"
-                  target="_blank" rel="noopener noreferrer">Repository ↗</a>
-              </div>
-            </div>
-          </article>
+            </details>
 
-          <article class="project">
-            <div class="project-cover">
-              <small>03 / Secure delivery</small>
-              <strong>Security within<br>the workflow.</strong>
+            <div class="project-links">
+              <a href="https://github.com/HimabinduVallapaneni/AWS_Architectures_CloudFormation"
+                target="_blank" rel="noopener noreferrer">Repository ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" data-category="delivery security">
+          <div class="project-cover">
+            <span>03 / Secure delivery</span>
+            <strong>Security within<br>the workflow.</strong>
+          </div>
+
+          <div class="project-body">
+            <h3>SecureHub</h3>
+            <p>An application and delivery project exploring consistent
+              developer workflows and integrated DevSecOps controls.</p>
+
+            <div class="tags">
+              <span>FastAPI</span><span>REST APIs</span><span>DevSecOps</span>
             </div>
 
-            <div class="project-body">
-              <h3>SecureHub</h3>
-              <p>
-                An application and delivery project exploring
-                standardized developer workflows and
-                integrated DevSecOps controls.
-              </p>
+            <details>
+              <summary>Explore project capabilities</summary>
               <ul>
-                <li>FastAPI backend and REST APIs</li>
+                <li>FastAPI backend and REST API architecture</li>
                 <li>Frontend/backend separation</li>
-                <li>Git-based development</li>
-                <li>Feature and DevOps branches</li>
+                <li>Git-based development workflows</li>
+                <li>Feature and DevOps branch workflows</li>
                 <li>Pull-request integration</li>
+                <li>Secure developer workflow design</li>
               </ul>
-              <div class="project-links">
-                <a href="https://github.com/HimabinduVallapaneni/SecureHub"
-                  target="_blank" rel="noopener noreferrer">Repository ↗</a>
-                <a href="https://github.com/HimabinduVallapaneni/SecureHub/tree/devops"
-                  target="_blank" rel="noopener noreferrer">DevOps branch ↗</a>
-              </div>
+            </details>
+
+            <div class="project-links">
+              <a href="https://github.com/HimabinduVallapaneni/SecureHub"
+                target="_blank" rel="noopener noreferrer">Repository ↗</a>
+              <a href="https://github.com/HimabinduVallapaneni/SecureHub/tree/devops"
+                target="_blank" rel="noopener noreferrer">DevOps branch ↗</a>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
       </div>
-    </section>
-
-    <section style="padding-top:0">
-      <div class="wrap approach">
-        <div class="approach-copy">
-          <p class="eyebrow">My approach</p>
-          <h2>Understand deeply.<br>Improve thoughtfully.</h2>
-          <p>
-            I approach technical challenges with curiosity,
-            structure, and an understanding of the wider system.
-            A useful solution addresses the immediate issue
-            and improves the way the system operates.
-          </p>
-          <blockquote>
-            Good platforms remove repetitive infrastructure work
-            and provide secure, reliable paths to production.
-          </blockquote>
-        </div>
-
-        <ol class="steps">
-          <li>
-            <div>
-              <strong>Understand the context</strong>
-              <p>Clarify impact, dependencies, recent changes,
-                and operational priorities.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Investigate with evidence</strong>
-              <p>Use logs, metrics, events, and configuration
-                to narrow the cause.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Validate the solution</strong>
-              <p>Apply a focused change and verify behavior,
-                security, and recovery needs.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Make the improvement repeatable</strong>
-              <p>Capture it in code, automation,
-                monitoring, or documentation.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="connect" style="padding-top:0">
-      <div class="wrap contact">
-        <p class="eyebrow">Let’s connect</p>
-        <h2>Reliable systems.<br>Meaningful collaboration.</h2>
-        <p>
-          Connect with me to discuss DevOps, cloud infrastructure,
-          platform engineering, and secure software delivery.
-        </p>
-        <div class="buttons">
-          <a class="button primary"
-            href="https://www.linkedin.com/in/himabindudev"
-            target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn ↗
-          </a>
-          <a class="button"
-            href="https://github.com/HimabinduVallapaneni?tab=repositories"
-            target="_blank" rel="noopener noreferrer">
-            Explore GitHub ↗
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <span>© Himabindu Vallapaneni</span>
-      <span>DevOps & Platform Engineering</span>
-      <a href="#home">Back to top ↑</a>
     </div>
-  </footer>
+  </section>
+
+  <section id="skills" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">Technical toolkit</p>
+        <h2>Across the platform lifecycle.</h2>
+      </div>
+
+      <div class="skill-grid">
+        <article class="skill">
+          <h3>Cloud & Infrastructure</h3>
+          <div class="tags">
+            <span>AWS</span><span>Azure</span><span>Terraform</span>
+            <span>CloudFormation</span><span>VPC</span><span>IAM</span><span>Networking</span>
+          </div>
+          <p>GCP: working knowledge.</p>
+        </article>
+
+        <article class="skill">
+          <h3>Containers & Kubernetes</h3>
+          <div class="tags">
+            <span>Docker</span><span>Kubernetes</span><span>Helm</span>
+            <span>EKS</span><span>AKS</span><span>Services</span><span>RBAC</span>
+          </div>
+        </article>
+
+        <article class="skill">
+          <h3>CI/CD & GitOps</h3>
+          <div class="tags">
+            <span>GitHub Actions</span><span>Jenkins</span><span>Git</span>
+            <span>Argo CD</span><span>Reusable Workflows</span>
+          </div>
+        </article>
+
+        <article class="skill">
+          <h3>Scripting & Automation</h3>
+          <div class="tags">
+            <span>Python</span><span>Bash</span><span>PowerShell</span>
+            <span>Boto3</span><span>AWS SDK</span>
+          </div>
+        </article>
+
+        <article class="skill">
+          <h3>DevSecOps</h3>
+          <div class="tags">
+            <span>Trivy</span><span>Gitleaks</span><span>SAST</span>
+            <span>SCA</span><span>IaC Scanning</span><span>Security Gates</span>
+          </div>
+        </article>
+
+        <article class="skill">
+          <h3>Observability & Operations</h3>
+          <div class="tags">
+            <span>Prometheus</span><span>Grafana</span><span>Logging</span>
+            <span>Alerting</span><span>RCA</span><span>Linux Troubleshooting</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap approach">
+      <div>
+        <p class="eyebrow">My approach</p>
+        <h2>Understand the system.<br>Improve the outcome.</h2>
+        <p>I approach technical challenges with curiosity, structure,
+          and an understanding of the wider operational context.</p>
+        <blockquote>
+          Good platforms remove repetitive infrastructure work and
+          provide secure, reliable paths to production.
+        </blockquote>
+      </div>
+
+      <ol>
+        <li><strong>Understand the impact</strong>
+          <p>Clarify affected services, dependencies, and recent changes.</p></li>
+        <li><strong>Investigate with evidence</strong>
+          <p>Use logs, metrics, events, and configuration to narrow the cause.</p></li>
+        <li><strong>Validate the fix</strong>
+          <p>Check behavior, security, and recovery considerations.</p></li>
+        <li><strong>Make improvement repeatable</strong>
+          <p>Capture the change in code, automation, or documentation.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="connect" style="padding-top:0">
+    <div class="wrap contact">
+      <p class="eyebrow">Let’s connect</p>
+      <h2>Reliable systems.<br>Meaningful collaboration.</h2>
+      <p>Connect with me to discuss DevOps, platform engineering,
+        cloud infrastructure, and secure software delivery.</p>
+      <div class="actions">
+        <a class="button primary" href="https://www.linkedin.com/in/himabindudev"
+          target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+        <a class="button" href="https://github.com/HimabinduVallapaneni?tab=repositories"
+          target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Himabindu Vallapaneni</span>
+    <span>DevOps & Platform Engineering</span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+const root = document.documentElement;
+const themeButton = document.getElementById("themeButton");
+
+function setTheme(theme) {
+  root.dataset.theme = theme;
+  const dark = theme === "dark";
+  themeButton.textContent = dark ? "Light mode" : "Dark mode";
+  themeButton.setAttribute(
+    "aria-label",
+    dark ? "Switch to light theme" : "Switch to dark theme"
+  );
+}
+
+let savedTheme = null;
+try {
+  savedTheme = localStorage.getItem("portfolio-theme");
+} catch {}
+
+setTheme(savedTheme === "dark" ? "dark" : "light");
+
+themeButton.addEventListener("click", () => {
+  const theme = root.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(theme);
+  try {
+    localStorage.setItem("portfolio-theme", theme);
+  } catch {}
+});
+
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", () => {
+  const open = navigation.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.textContent = open ? "Close" : "Menu";
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "Menu";
+  });
+});
+
+const stages = {
+  build: {
+    title: "Build strong foundations.",
+    description:
+      "Define repeatable infrastructure with Terraform and CloudFormation. Bring consistency to environments, configuration, networking, and access."
+  },
+  deliver: {
+    title: "Make delivery repeatable.",
+    description:
+      "Connect application validation, container builds, artifact publishing, and deployment configuration through CI/CD and GitOps workflows."
+  },
+  secure: {
+    title: "Integrate security into delivery.",
+    description:
+      "Apply secrets scanning, dependency checks, container scanning, and infrastructure validation. Give teams useful feedback within their normal workflow."
+  },
+  operate: {
+    title: "Understand production behavior.",
+    description:
+      "Use monitoring, logs, health checks, and systematic troubleshooting to investigate issues and improve operational reliability."
+  }
+};
+
+const stageButtons = document.querySelectorAll(".stage");
+
+stageButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    stageButtons.forEach(item => {
+      item.setAttribute("aria-pressed", String(item === button));
+    });
+    const stage = stages[button.dataset.stage];
+    document.getElementById("stageTitle").textContent = stage.title;
+    document.getElementById("stageDescription").textContent = stage.description;
+  });
+});
+
+const filters = document.querySelectorAll(".filter");
+const projects = document.querySelectorAll(".project");
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => {
+      item.setAttribute("aria-pressed", String(item === button));
+    });
+
+    projects.forEach(project => {
+      const categories = project.dataset.category.split(" ");
+      project.hidden =
+        button.dataset.filter !== "all" &&
+        !categories.includes(button.dataset.filter);
+    });
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
