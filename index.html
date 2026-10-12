@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Himabindu Vallapaneni — DevOps and Platform Engineer. Explore cloud infrastructure, Kubernetes, automation, and secure delivery projects.">
+  <title>Himabindu | DevOps & Platform Engineer</title>
+
+  <style>
+    :root {
+      --bg: #080a0d;
+      --panel: #101318;
+      --line: #252a32;
+      --white: #f1f3f5;
+      --muted: #a0a8b5;
+      --green: #c5fa73;
+      --purple: #baa2ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    ::selection {
+      background: var(--green);
+      color: var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
+    }
+
+    .wrap { width: min(1200px, 90%); margin: auto; }
+    .muted { color: var(--muted); }
+    .accent { color: var(--green); }
+    .mono { font-family: "Courier New", monospace; }
+    [hidden] { display: none !important; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: #080a0def;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(20px);
+    }
+
+    nav {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: var(--green); }
+
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { color: var(--muted); font-size: .88rem; }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-contact {
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-size: .82rem;
+    }
+
+    .hero {
+      position: relative;
+      padding: 90px 0 70px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#ffffff04 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff04 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: linear-gradient(black, transparent);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      text-transform: uppercase;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 16px #c5fa7370;
+    }
+
+    h1 {
+      margin: 24px 0;
+      font-size: clamp(3rem, 6.8vw, 6rem);
+      line-height: .98;
+      letter-spacing: -5px;
+      font-weight: 800;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .intro {
+      max-width: 500px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .identity {
+      margin-top: 24px;
+      font-size: .86rem;
+      color: var(--white);
+    }
+
+    .identity span {
+      display: block;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 13px 20px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #1c222b;
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: #11170a;
+      border-color: var(--green);
+    }
+
+    .btn.primary:hover { background: #d7ff9e; }
+
+    /* Illustrative pipeline panel */
+    .terminal {
+      position: relative;
+      border: 1px solid #38412d;
+      border-radius: 16px;
+      background: #101510;
+      box-shadow: 0 30px 100px #0008, 0 0 80px #c5fa7308;
+      transform: rotate(2deg);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid #ffffff12;
+      font-size: .7rem;
+      color: #a2af97;
+    }
+
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots i {
+      width: 8px;
+      height: 8px;
+      background: #65705c;
+      border-radius: 50%;
+    }
+
+    .terminal-body { padding: 25px; }
+
+    .command {
+      margin-bottom: 22px;
+      color: #d9e8cd;
+      font-size: .8rem;
+    }
+
+    .pipeline-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px solid #ffffff09;
+      animation: appear .6s both;
+    }
+
+    .pipeline-step:nth-of-type(2) { animation-delay: .1s; }
+    .pipeline-step:nth-of-type(3) { animation-delay: .2s; }
+    .pipeline-step:nth-of-type(4) { animation-delay: .3s; }
+    .pipeline-step:nth-of-type(5) { animation-delay: .4s; }
+
+    .check {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border: 1px solid #c5fa7340;
+      background: #c5fa7310;
+      border-radius: 50%;
+      color: var(--green);
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+
+    .step-text { flex: 1; }
+    .step-text strong {
+      display: block;
+      font-size: .84rem;
+      font-weight: 500;
+    }
+
+    .step-text small {
+      color: #96a18e;
+      font-size: .7rem;
+    }
+
+    .pass {
+      font-size: .62rem;
+      color: var(--green);
+      letter-spacing: 1px;
+    }
+
+    .terminal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      font-size: .68rem;
+      color: #96a18e;
+      gap: 12px;
+    }
+
+    .pulse {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    .strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+    }
+
+    .strip-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .78rem;
+      letter-spacing: 1px;
+    }
+
+    .strip-inner span::before {
+      content: "+";
+      margin-right: 12px;
+      color: var(--green);
+    }
+
+    section { padding: 90px 0; }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .label {
+      margin-bottom: 15px;
+      color: var(--green);
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .section-note {
+      max-width: 340px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+
+    .filter {
+      padding: 8px 17px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: transparent;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .filter[aria-pressed="true"] {
+      color: var(--bg);
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--panel);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .project:hover {
+      border-color: #c5fa7350;
+      transform: translateY(-4px);
+    }
+
+    .project.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project-art {
+      min-height: 220px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at center, #c5fa7310, transparent 70%),
+        #0d110e;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .featured .project-art {
+      border-bottom: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .project-body { padding: 30px; }
+
+    .project-type {
+      font-size: .65rem;
+      color: var(--green);
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .project h3 {
+      font-size: 1.5rem;
+      line-height: 1.25;
+      letter-spacing: -.6px;
+      margin: 14px 0;
+    }
+
+    .project p { color: var(--muted); font-size: .85rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0; }
+
+    .tags span {
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: #c4cad4;
+      font-size: .65rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-right: 18px;
+      margin-top: 8px;
+      font-size: .8rem;
+      color: var(--green);
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    .flow-art { width: 100%; max-width: 360px; }
+
+    .flow-node {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border: 1px solid #c5fa7330;
+      background: #141b12;
+      border-radius: 8px;
+      font-size: .75rem;
+    }
+
+    .flow-node span { color: var(--green); }
+    .flow-line {
+      width: 1px;
+      height: 22px;
+      margin: auto;
+      background: #c5fa7370;
+    }
+
+    .cloud-art { background: #11121b; }
+
+    .infra-art {
+      width: 100%;
+      max-width: 340px;
+      text-align: center;
+      font-family: "Courier New", monospace;
+    }
+
+    .infra-title {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #baa2ff60;
+      border-radius: 8px;
+      color: var(--purple);
+      font-size: .8rem;
+    }
+
+    .infra-branches {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .infra-branches span {
+      padding: 14px;
+      border: 1px solid #baa2ff30;
+      border-radius: 8px;
+      font-size: .7rem;
+    }
+
+    .secure-art { background: #111820; }
+
+    .shield {
+      width: 100px;
+      height: 115px;
+      display: grid;
+      place-items: center;
+      background: #80c4ff0c;
+      border: 1px solid #80c4ff50;
+      clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+      color: #80c4ff;
+      font-size: 2.6rem;
+    }
+
+    .secure-caption {
+      margin-top: 16px;
+      color: #80c4ff;
+      font-size: .72rem;
+      text-align: center;
+    }
+
+    .about {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #0c0f13;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 70px;
+    }
+
+    .about-copy p { color: var(--muted); font-size: .95rem; }
+    .about-copy strong { color: var(--white); }
+
+    blockquote {
+      margin: 28px 0 0;
+      padding: 20px 0 20px 22px;
+      border-left: 2px solid var(--green);
+      color: var(--white);
+      font-size: 1.05rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      padding: 25px;
+      border-top: 2px solid var(--line);
+    }
+
+    .skill:hover { border-color: var(--green); }
+    .skill-number { color: var(--green); font-size: .7rem; }
+    .skill h3 { margin: 20px 0 15px; font-size: 1rem; }
+    .skill p { color: var(--muted); font-size: .82rem; line-height: 2; }
+
+    .connect {
+      padding: 75px 50px;
+      border: 1px solid #c5fa7330;
+      border-radius: 18px;
+      background: radial-gradient(ellipse at top right, #c5fa7314, transparent 65%);
+      text-align: center;
+    }
+
+    .connect p { color: var(--muted); }
+    .connect .actions { justify-content: center; }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @keyframes pulse {
+      50% { box-shadow: 0 0 0 5px #c5fa7310; }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 950px) {
+      .hero-grid { gap: 35px; }
+      h1 { letter-spacing: -3px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 35px; }
+    }
+
+    @media (max-width: 720px) {
+      nav { min-height: 72px; }
+      .nav-contact { display: none; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .75rem; }
+      .hero { padding: 55px 0; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(3.2rem, 12vw, 5rem); }
+      .terminal { transform: none; margin-top: 15px; }
+      section { padding: 60px 0; }
+      .section-top { align-items: start; flex-direction: column; gap: 18px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project.featured { display: block; }
+      .featured .project-art {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .connect { padding: 45px 22px; }
+      .strip-inner { justify-content: start; }
+    }
+
+    @media (max-width: 420px) {
+      .logo { font-size: 1rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .terminal-body, .project-body { padding: 22px; }
+      .terminal-footer { flex-direction: column; align-items: start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="wrap" aria-label="Main navigation">
+      <a href="#home" class="logo">HV<span>/</span></a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+      </div>
+      <a class="nav-contact"
+        href="https://www.linkedin.com/in/himabindu-v-12ba84282"
+        target="_blank" rel="noopener noreferrer">
+        Let’s connect ↗
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            DevOps & Platform Engineer
+          </div>
+
+          <h1>Less friction.<br>More <span>flow.</span></h1>
+
+          <p class="intro">
+            I build automated infrastructure and secure delivery workflows
+            that turn complex operations into a reliable path to production.
+          </p>
+
+          <div class="identity">
+            Himabindu Vallapaneni
+            <span>Cloud · Kubernetes · Automation · DevSecOps</span>
+          </div>
+
+          <div class="actions">
+            <a href="#work" class="btn primary">Explore my work <span>↗</span></a>
+            <a href="https://github.com/HimabinduVallapaneni"
+              class="btn" target="_blank" rel="noopener noreferrer">
+              GitHub <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Illustrative delivery pipeline">
+          <div class="terminal-top mono">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>delivery-pipeline / demo</span>
+            <span>↗</span>
+          </div>
+
+          <div class="terminal-body">
+            <div class="command mono">
+              <span class="accent">$</span> ship --secure --repeatable
+            </div>
+
+            <div class="pipeline-step">
+              <span class="check">✓</span>
+              <div class="step-text">
+                <strong>Validate application</strong>
+                <small>Tests · Lint · Build</small>
+              </div>
+              <span class="pass mono">PASS</span>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="check">✓</span>
+              <div class="step-text">
+                <strong>Build container</strong>
+                <small>Multi-stage Docker image</small>
+              </div>
+              <span class="pass mono">PASS</span>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="check">✓</span>
+              <div class="step-text">
+                <strong>Apply security gates</strong>
+                <small>Trivy · Vulnerability checks</small>
+              </div>
+              <span class="pass mono">PASS</span>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="check">✓</span>
+              <div class="step-text">
+                <strong>Publish immutable artifact</strong>
+                <small>GHCR · Commit SHA tag</small>
+              </div>
+              <span class="pass mono">PASS</span>
+            </div>
+
+            <div class="pipeline-step">
+              <span class="check">✓</span>
+              <div class="step-text">
+                <strong>Sync deployment</strong>
+                <small>GitOps · Argo CD · Kubernetes</small>
+              </div>
+              <span class="pass mono">PASS</span>
+            </div>
+
+            <div class="terminal-footer mono">
+              <span><i class="pulse" aria-hidden="true"></i>Illustrative workflow</span>
+              <span>source → production</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="wrap strip-inner mono">
+        <span>AWS / AZURE</span>
+        <span>TERRAFORM</span>
+        <span>KUBERNETES</span>
+        <span>GITHUB ACTIONS</span>
+        <span>GITOPS</span>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="label mono">01 / Selected work</div>
+            <h2>Built to automate.<br>Designed to repeat.</h2>
+          </div>
+          <p class="section-note">
+            Hands-on projects connecting infrastructure,
+            software delivery, and security.
+          </p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter" data-filter="all" aria-pressed="true">All projects</button>
+          <button class="filter" data-filter="delivery" aria-pressed="false">Delivery</button>
+          <button class="filter" data-filter="cloud" aria-pressed="false">Cloud</button>
+          <button class="filter" data-filter="security" aria-pressed="false">Security</button>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project featured" data-category="delivery security">
+            <div class="project-art">
+              <div class="flow-art mono" aria-label="Project delivery stages">
+                <div class="flow-node">Source code <span>Git push</span></div>
+                <div class="flow-line"></div>
+                <div class="flow-node">GitHub Actions <span>CI</span></div>
+                <div class="flow-line"></div>
+                <div class="flow-node">Docker + Trivy <span>Build / Scan</span></div>
+                <div class="flow-line"></div>
+                <div class="flow-node">GHCR <span>SHA image</span></div>
+                <div class="flow-line"></div>
+                <div class="flow-node">Argo CD → Kubernetes <span>GitOps</span></div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-type mono">01 / CI/CD & GitOps</div>
+              <h3>From commit to container.<br>With security built in.</h3>
+              <p>
+                A TypeScript delivery project combining automated tests,
+                reproducible Node.js builds, multi-stage Docker images,
+                Trivy security gates, and Git-managed Kubernetes configuration.
+              </p>
+              <p>
+                Publishes images to GHCR with immutable commit SHA tags
+                and automates deployment manifest updates.
+              </p>
+              <div class="tags">
+                <span>GitHub Actions</span><span>Docker</span>
+                <span>Trivy</span><span>GHCR</span>
+                <span>Kubernetes</span><span>Argo CD</span>
+              </div>
+              <a class="project-link"
+                href="https://github.com/HimabinduVallapaneni/Typescript_CICD"
+                target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+              <a class="project-link"
+                href="https://github.com/HimabinduVallapaneni/Typescript_CICD/blob/main/.github/workflows/ci-cd.yml"
+                target="_blank" rel="noopener noreferrer">View workflow ↗</a>
+            </div>
+          </article>
+
+          <article class="project" data-category="cloud">
+            <div class="project-art cloud-art">
+              <div class="infra-art">
+                <div class="infra-title">CloudFormation</div>
+                <div class="infra-branches">
+                  <span>NETWORK</span><span>COMPUTE</span><span>SECURITY</span>
+                </div>
+                <p class="muted" style="font-size:.7rem;margin:20px 0 0">
+                  Parameterize → Provision → Reuse
+                </p>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-type mono">02 / Cloud infrastructure</div>
+              <h3>Infrastructure defined.<br>Provisioning automated.</h3>
+              <p>
+                Reusable AWS CloudFormation templates for networking,
+                compute, security, and scaling—with parameterized
+                configuration, Systems Manager AMI retrieval,
+                resource tagging, and dependency management.
+              </p>
+              <div class="tags">
+                <span>AWS</span><span>CloudFormation</span>
+                <span>YAML</span><span>Systems Manager</span>
+              </div>
+              <a class="project-link"
+                href="https://github.com/HimabinduVallapaneni/AWS_Architectures_CloudFormation"
+                target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+            </div>
+          </article>
+
+          <article class="project" data-category="security delivery">
+            <div class="project-art secure-art">
+              <div>
+                <div class="shield" aria-hidden="true">✓</div>
+                <div class="secure-caption mono">SECUREHUB</div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-type mono">03 / Secure developer workflows</div>
+              <h3>A paved road for<br>secure software delivery.</h3>
+              <p>
+                A FastAPI application with frontend/backend separation,
+                REST APIs, and feature and DevOps branch workflows.
+                SecureHub explores automated security feedback within
+                normal development and delivery.
+              </p>
+              <div class="tags">
+                <span>FastAPI</span><span>REST APIs</span>
+                <span>DevSecOps</span><span>Security gates</span>
+              </div>
+              <a class="project-link"
+                href="https://github.com/HimabinduVallapaneni/SecureHub"
+                target="_blank" rel="noopener noreferrer">Explore repository ↗</a>
+              <a class="project-link"
+                href="https://github.com/HimabinduVallapaneni/SecureHub/tree/devops"
+                target="_blank" rel="noopener noreferrer">DevOps branch ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div>
+          <div class="label mono">02 / Behind the platforms</div>
+          <h2>I make complex<br>systems <span class="accent">easier<br>to work with.</span></h2>
+        </div>
+        <div class="about-copy">
+          <p>
+            I’m <strong>Himabindu Vallapaneni</strong>, a DevOps and Platform
+            Engineer with <strong>5+ years of experience</strong> across
+            cloud infrastructure, CI/CD automation, Infrastructure as Code,
+            containers, Kubernetes, security, and production operations.
+          </p>
+          <p>
+            My focus is reusable platforms and delivery workflows that
+            reduce manual engineering effort. I work across infrastructure
+            provisioning, containerization, GitOps, observability,
+            security controls, and production reliability.
+          </p>
+          <blockquote>
+            Good platforms remove repetitive infrastructure work from
+            developers and provide secure, reliable paths to production.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="label mono">03 / Engineering toolkit</div>
+            <h2>The stack behind the work.</h2>
+          </div>
+          <p class="section-note">
+            Tools for provisioning, shipping, securing,
+            and operating applications.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill">
+            <span class="skill-number mono">/ 01</span>
+            <h3>Cloud & Infrastructure</h3>
+            <p>
+              AWS · Azure<br>
+              Terraform · CloudFormation<br>
+              VPC · IAM · Networking<br>
+              GCP — working knowledge
+            </p>
+          </div>
+          <div class="skill">
+            <span class="skill-number mono">/ 02</span>
+            <h3>Containers & Delivery</h3>
+            <p>
+              Docker · Kubernetes<br>
+              Helm · EKS · AKS<br>
+              GitHub Actions · Jenkins<br>
+              Git · Argo CD
+            </p>
+          </div>
+          <div class="skill">
+            <span class="skill-number mono">/ 03</span>
+            <h3>Automation & Security</h3>
+            <p>
+              Python · Bash · PowerShell<br>
+              Boto3 · AWS SDK<br>
+              Trivy · Gitleaks<br>
+              SAST · SCA · IaC scanning
+            </p>
+          </div>
+          <div class="skill">
+            <span class="skill-number mono">/ 04</span>
+            <h3>Reliability & Operations</h3>
+            <p>
+              Prometheus · Grafana<br>
+              Monitoring · Logging<br>
+              Alerting · Health checks<br>
+              RCA · Linux troubleshooting
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect" style="padding-top:0">
+      <div class="wrap connect">
+        <div class="label mono">04 / Let’s connect</div>
+        <h2>Better platforms start<br>with a conversation.</h2>
+        <p>DevOps. Cloud infrastructure. Secure delivery. Let’s talk.</p>
+        <div class="actions">
+          <a class="btn primary"
+            href="https://www.linkedin.com/in/himabindu-v-12ba84282"
+            target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+          <a class="btn"
+            href="https://github.com/HimabinduVallapaneni?tab=repositories"
+            target="_blank" rel="noopener noreferrer">Explore GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Himabindu Vallapaneni</span>
+      <span class="mono">Infrastructure. Automation. Reliability.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const filters = document.querySelectorAll(".filter");
+    const projects = document.querySelectorAll(".project");
+
+    filters.forEach(button => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.filter;
+
+        filters.forEach(filter => {
+          filter.setAttribute(
+            "aria-pressed",
+            String(filter === button)
+          );
+        });
+
+        projects.forEach(project => {
+          const categories = project.dataset.category.split(" ");
+          project.hidden =
+            category !== "all" && !categories.includes(category);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
